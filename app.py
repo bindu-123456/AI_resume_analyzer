@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, jsonify
 from pypdf import PdfReader
 from io import BytesIO
-
+from database import create_table, save_analysis
 import re
 app = Flask(__name__)
-
+create_table()
 
 jobs = {
     1: {
@@ -247,6 +247,15 @@ def analyze_resume():
         for skill in analysis["missing_skills"]
         if skill.lower() in suggestion_map
     ]
+
+    save_analysis(
+        resume_filename=pdf_file.filename,
+        job_title=selected_job["title"],
+        match_percentage=analysis["match_percentage"],
+        matching_skills=analysis["matching_skills"],
+        missing_skills=analysis["missing_skills"],
+        suggestions=suggestions
+    )
 
     # 11. Send the results back to JavaScript
     return jsonify({

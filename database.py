@@ -1,24 +1,29 @@
 import sqlite3
+import json
+from datetime import datetime
+
+DATABASE_NAME = "resume_analyzer.db"
 
 
 def get_db_connection():
-    connection = sqlite3.connect("resume_analyzer.db")
+    connection = sqlite3.connect(DATABASE_NAME)
     connection.row_factory = sqlite3.Row
     return connection
 
 
-def create_applications_table():
+def create_table():
     connection = get_db_connection()
 
     connection.execute("""
-        CREATE TABLE IF NOT EXISTS applications (
+        CREATE TABLE IF NOT EXISTS analysis_history (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            applicant_name TEXT NOT NULL,
-            email TEXT NOT NULL,
-            phone TEXT NOT NULL,
+            resume_filename TEXT NOT NULL,
             job_title TEXT NOT NULL,
             match_percentage INTEGER NOT NULL,
-            application_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            matching_skills TEXT NOT NULL,
+            missing_skills TEXT NOT NULL,
+            suggestions TEXT NOT NULL,
+            analyzed_at TEXT NOT NULL
         )
     """)
 
@@ -26,6 +31,36 @@ def create_applications_table():
     connection.close()
 
 
-if __name__ == "__main__":
-    create_applications_table()
-    print("Applications table created successfully!")
+def save_analysis(
+    resume_filename,
+    job_title,
+    match_percentage,
+    matching_skills,
+    missing_skills,
+    suggestions
+):
+    connection = get_db_connection()
+
+    connection.execute("""
+        INSERT INTO analysis_history (
+            resume_filename,
+            job_title,
+            match_percentage,
+            matching_skills,
+            missing_skills,
+            suggestions,
+            analyzed_at
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    """, (
+        resume_filename,
+        job_title,
+        match_percentage,
+        json.dumps(matching_skills),
+        json.dumps(missing_skills),
+        json.dumps(suggestions),
+        datetime.now().isoformat(timespec="seconds")
+    ))
+
+    connection.commit()
+    connection.close()
