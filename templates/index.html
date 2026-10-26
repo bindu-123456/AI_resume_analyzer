@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Analyzer</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h2>🤖 AI Resume Analyzer</h2>
+        <p>Improve your resume. Prepare for your dream job.</p>
+    </header>
+
+    <main class="container">
+
+        <h1>Analyze Your Resume</h1>
+        <p>Upload your resume and compare it with a job description.</p>
+
+        <form id="resumeForm">
+
+            <label for="resume">Upload Resume (PDF)</label>
+            <input type="file" id="resume" accept=".pdf" multiple required>
+
+            <label for="job">Select a Job Role</label>
+
+<select id="job" required>
+    <option value="">-- Select a Job --</option>
+</select>
+            <button type="submit">Analyze Resume</button>
+
+        </form>
+
+        <div id="result"></div>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</body>
+</html>

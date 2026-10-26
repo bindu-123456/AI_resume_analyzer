@@ -1,0 +1,594 @@
+/* ===== General Reset ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary: #1d4ed8;
+    --primary-dark: #153eaa;
+    --navy: #102447;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --surface: #ffffff;
+    --background: #f3f6fc;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.7;
+    min-height: 100vh;
+}
+
+/* ===== Header ===== */
+header {
+    background: linear-gradient(135deg, #102447, #1d4ed8);
+    color: white;
+    text-align: center;
+    padding: 38px 20px;
+    box-shadow: 0 5px 20px rgba(16, 36, 71, 0.16);
+}
+
+header h2 {
+    font-size: clamp(25px, 4vw, 34px);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 7px;
+}
+
+header p {
+    font-size: 15px;
+    color: #e0eaff;
+}
+
+/* ===== Main Container ===== */
+.container {
+    width: min(920px, calc(100% - 36px));
+    margin: 38px auto;
+    padding: clamp(22px, 4vw, 40px);
+    background: var(--surface);
+    border: 1px solid #e7edf6;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
+}
+
+.container h1 {
+    color: var(--navy);
+    font-size: clamp(26px, 4vw, 32px);
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
+
+.container > p {
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+/* ===== Form Labels ===== */
+label {
+    display: block;
+    margin-top: 22px;
+    margin-bottom: 9px;
+    font-weight: 600;
+    color: #334155;
+    font-size: 15px;
+}
+
+/* ===== File Input and Textarea ===== */
+input[type="file"],
+textarea,
+select {
+    display: block;
+    width: 100%;
+    padding: 14px 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--text);
+    background: #fbfdff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="file"] {
+    cursor: pointer;
+}
+
+input[type="file"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.10);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+select {
+    cursor: pointer;
+}
+
+/* ===== Buttons ===== */
+button {
+    width: 100%;
+    margin-top: 24px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(29, 78, 216, 0.15);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #1d4ed8, #153eaa);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(29, 78, 216, 0.22);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+}
+
+/* ===== Results Section ===== */
+#result {
+    margin-top: 34px;
+    overflow-wrap: anywhere;
+}
+
+#result h2 {
+    color: var(--navy);
+    font-size: 26px;
+    margin: 28px 0 14px;
+}
+
+#result h3 {
+    color: #1e40af;
+    font-size: 19px;
+    line-height: 1.4;
+    margin: 20px 0 12px;
+}
+
+#result p {
+    margin-bottom: 12px;
+    color: #475569;
+}
+
+/* ===== General Result Lists ===== */
+#result ul {
+    padding: 16px 18px 16px 40px;
+    margin: 12px 0 22px;
+    background: #f8faff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+#result li {
+    padding: 5px 0;
+    color: #334155;
+}
+
+/* ===== Loading Card ===== */
+.loading-card {
+    padding: 26px;
+    text-align: center;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 14px;
+}
+
+.loading-card h3 {
+    color: #1d4ed8;
+    margin-bottom: 8px;
+}
+
+/* ===== Professional Match Score Card ===== */
+.score-card {
+    margin: 28px 0;
+    padding: 32px 26px;
+    text-align: center;
+    background: linear-gradient(135deg, #eef4ff, #ffffff);
+    border: 1px solid #d6e4ff;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(29, 78, 216, 0.07);
+}
+
+.score-card h3 {
+    margin: 0 0 14px;
+    color: #102447;
+    font-size: 20px;
+}
+
+.score-value {
+    font-size: clamp(46px, 7vw, 58px);
+    font-weight: 800;
+    line-height: 1.2;
+    color: #1d4ed8;
+    margin: 12px 0 22px;
+}
+
+.progress-track {
+    width: 100%;
+    height: 13px;
+    background: #dbeafe;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 18px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #2563eb, #16a34a);
+    border-radius: 20px;
+    transition: width 0.6s ease;
+}
+
+.score-card p {
+    color: #475569;
+    font-size: 14px;
+}
+
+/* ===== Professional Skill Cards ===== */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    margin: 28px 0;
+}
+
+.skill-card {
+    min-width: 0;
+    padding: 24px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.skill-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.09);
+}
+
+.skill-card h3 {
+    font-size: 19px;
+    margin: 0 0 18px;
+}
+
+.matching-card {
+    border-top: 4px solid #16a34a;
+}
+
+.matching-card h3 {
+    color: #15803d;
+}
+
+.missing-card {
+    border-top: 4px solid #f59e0b;
+}
+
+.missing-card h3 {
+    color: #b45309;
+}
+
+.skill-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-card li {
+    padding: 10px 12px;
+    margin-bottom: 9px;
+    border-radius: 9px;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.matching-card li {
+    color: #166534;
+    background: #f0fdf4;
+    border: 1px solid #dcfce7;
+}
+
+.missing-card li {
+    color: #92400e;
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+}
+
+/* ===== Improvement Suggestions ===== */
+.suggestions-card {
+    margin: 26px 0;
+    padding: 24px;
+    background: linear-gradient(135deg, #f5f8ff, #ffffff);
+    border: 1px solid #dce7ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(29, 78, 216, 0.05);
+}
+
+.suggestions-card h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #1d4ed8;
+    font-size: 19px;
+}
+
+.suggestions-card li {
+    padding: 8px 0;
+    color: #334155;
+    line-height: 1.7;
+}
+
+/* ===== Mobile Results Layout ===== */
+@media (max-width: 650px) {
+    .skills-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .score-card {
+        padding: 24px 18px;
+    }
+
+    .skill-card,
+    .suggestions-card {
+        padding: 19px;
+    }
+}
+/* ===== Required Skills Information ===== */
+.total-skills {
+    padding: 15px;
+    text-align: center;
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: #475569;
+    margin: 20px 0;
+}
+
+/* ===== Extracted Resume Text ===== */
+#result pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    max-height: 350px;
+    overflow-y: auto;
+    padding: 18px;
+    margin-top: 12px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.resume-text-card {
+    margin-top: 25px;
+    padding: 22px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.resume-text-card h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--navy);
+}
+
+/* ===== Download and Analyze Again Buttons ===== */
+button.analyze-again-button {
+    background: var(--navy);
+    box-shadow: none;
+    margin-bottom: 10px;
+}
+
+button.analyze-again-button:hover {
+    background: #1e3a8a;
+}
+
+/* ===== Error Messages ===== */
+.error {
+    color: #991b1b;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    padding: 14px;
+    border-radius: 10px;
+    margin-top: 16px;
+}
+
+/* ===== Mobile Responsive Design ===== */
+@media (max-width: 650px) {
+    header {
+        padding: 28px 16px;
+    }
+
+    .container {
+        width: calc(100% - 24px);
+        margin: 18px auto;
+        padding: 22px 18px;
+        border-radius: 15px;
+    }
+
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+
+    .score-card {
+        padding: 22px 16px;
+    }
+
+    .skill-card,
+    .resume-text-card,
+    .suggestions-card {
+        padding: 18px;
+    }
+
+    #result h2 {
+        font-size: 23px;
+    }
+
+    #result h3 {
+        font-size: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
+}
+/* ===== Final Professional Results Polish ===== */
+
+/* Clearer results heading */
+#result > h2 {
+    color: #102447;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+}
+
+/* Better spacing between result sections */
+#result {
+    margin-top: 36px;
+    line-height: 1.7;
+}
+
+/* Premium score card */
+.score-card {
+    padding: 34px 28px;
+    background: linear-gradient(145deg, #f0f6ff, #ffffff);
+    border: 1px solid #dbe7fb;
+    border-radius: 18px;
+    box-shadow: 0 10px 28px rgba(16, 36, 71, 0.07);
+}
+
+.score-value {
+    color: #1d4ed8;
+    font-size: clamp(46px, 6vw, 58px);
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+/* More refined progress bar */
+.progress-track {
+    height: 12px;
+    background: #dce7f7;
+    border-radius: 999px;
+}
+
+.progress-bar {
+    border-radius: 999px;
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.15);
+}
+
+/* Clean skill cards */
+.skills-container {
+    gap: 22px;
+    align-items: stretch;
+}
+
+.skill-card {
+    padding: 24px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(15, 23, 42, 0.045);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 9px 22px rgba(15, 23, 42, 0.08);
+}
+
+.skill-card h3 {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+.skill-card li {
+    padding: 10px 12px;
+    margin-bottom: 9px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Matching and missing skill colors */
+.matching-card {
+    border-top: 4px solid #16a34a;
+}
+
+.matching-card li {
+    background: #f0fdf4;
+    border: 1px solid #dcfce7;
+}
+
+.missing-card {
+    border-top: 4px solid #f59e0b;
+}
+
+.missing-card li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+}
+
+/* More readable suggestions and summary */
+.suggestions-card {
+    padding: 24px;
+    margin: 26px 0;
+    background: #f5f8ff;
+    border: 1px solid #dce7ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 14px;
+}
+
+.total-skills {
+    padding: 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+/* Small-screen improvements */
+@media (max-width: 650px) {
+    #result > h2 {
+        font-size: 24px;
+    }
+
+    .skills-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .score-card,
+    .skill-card,
+    .suggestions-card {
+        padding: 20px;
+    }
+}
